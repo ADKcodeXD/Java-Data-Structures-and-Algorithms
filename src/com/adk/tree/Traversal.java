@@ -2,24 +2,14 @@ package com.adk.tree;
 
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * 二叉树遍历实现
- * 包含先序中序后序的递归实现和非递归实现
+ * 包含先序中序后序层序的递归实现和非递归实现
  *
  */
 public class Traversal {
-    private static class TreeNode{
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        public TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
 
     /**
      * 先序遍历 递归实现
@@ -89,7 +79,45 @@ public class Traversal {
         }
     }
 
+    /**
+     * 后序遍历的递归实现
+     * @param treeNode
+     */
+    public void postOrderTraversal(TreeNode treeNode){
+        if(treeNode==null){
+            return;
+        }
+        postOrderTraversal(treeNode.left);
+        postOrderTraversal(treeNode.right);
+        System.out.print(treeNode.val);
+    }
+
+    /**
+     * 二叉树层先遍历法 使用队列进行遍历。
+     * @param treeNode
+     */
+    public void levelOrderTraversal(TreeNode treeNode){
+        if(treeNode==null) return;
+        TreeNode T=treeNode;
+        Queue<TreeNode> queue=new LinkedList<>();
+        queue.add(T);
+        while (!queue.isEmpty()){
+            T=queue.poll();
+            System.out.print(T.val+" ");
+            if (T.left!=null) queue.add(T.left);
+            if (T.right!=null) queue.add(T.right);
+        }
+    }
+
+
     public static void main(String[] args) {
+        /**
+         * 新建一个树结构进行测试
+         * 树的结构为
+         *                   1
+         *          2                3
+         * 4            null    5           6
+         */
         TreeNode node3 = new TreeNode(4, null, null);
         TreeNode node4 = new TreeNode(5, null, null);
         TreeNode node5 = new TreeNode(6, null, null);
@@ -97,6 +125,6 @@ public class Traversal {
         TreeNode node2 = new TreeNode(3, node4, node5);
         TreeNode root = new TreeNode(1, node1, node2);
         Traversal traversal = new Traversal();
-        traversal.preOrderTraversal_NonRecursive(root);
+        traversal.levelOrderTraversal(root);
     }
 }
