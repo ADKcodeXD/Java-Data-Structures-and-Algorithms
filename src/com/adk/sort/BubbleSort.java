@@ -1,5 +1,8 @@
 package com.adk.sort;
 
+/**
+ * 冒泡排序java版本
+ */
 public class BubbleSort {
     public void bubbleSort(int [] nums ){
         if (nums==null||nums.length<2){
