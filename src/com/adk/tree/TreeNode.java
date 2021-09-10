@@ -14,3 +14,16 @@ public class TreeNode {
         this.right = right;
     }
 }
+class AVLTreeNode{
+    int height;
+    AVLTreeNode left;
+    AVLTreeNode right;
+    int val;
+
+    public AVLTreeNode(int height, AVLTreeNode left, AVLTreeNode right, int val) {
+        this.height = height;
+        this.left = left;
+        this.right = right;
+        this.val = val;
+    }
+}
