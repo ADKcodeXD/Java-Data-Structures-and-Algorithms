@@ -27,3 +27,15 @@ class AVLTreeNode{
         this.val = val;
     }
 }
+class MaxHeapNode{
+    int []data;
+    int maxSize;
+    public int size;
+    final int MAXDATA=9999999;
+    public MaxHeapNode(int maxSize){
+        this.maxSize=maxSize;
+        this.data=new int[maxSize+1];
+        this.data[0]=MAXDATA;
+        this.size=0;
+    }
+}
