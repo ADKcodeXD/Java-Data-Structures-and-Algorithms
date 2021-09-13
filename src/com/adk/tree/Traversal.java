@@ -64,18 +64,21 @@ public class Traversal {
         Deque<TreeNode> stack=new LinkedList<>();
         stack.addLast(T);
         while (!stack.isEmpty()){
-            if(T!=null &&  T.left!=null) {
+            while(T!=null &&  T.left!=null) {
                 stack.add(T.left);
                 T = T.left;
-            }else {//如果是左节点是空的 就走这个分支，说明没有左子树了
-                T = stack.removeLast();//返回到上一个节点（根节点）
-                System.out.print(T.val+" ");//访问
-                if(T!=null && T.right!=null) {//如果栈点元素有右孩子的话，将有节点压入栈中
-                    stack.addLast(T.right);
-                   T = T.right;
-                }else
-                    T = null;//p=stk.pop;已经访问过p了，p设置为null
+            }//如果是左节点是空的 就走这个分支，说明没有左子树了
+
+            T = stack.removeLast();//返回到上一个节点（根节点）
+            System.out.print(T.val+" ");//访问
+
+            if(T!=null && T.right!=null) {//如果栈点元素有右孩子的话，将有节点压入栈中
+                stack.addLast(T.right);
+                T = T.right;
+            }else {
+                T=null;
             }
+
         }
     }
 
@@ -125,6 +128,6 @@ public class Traversal {
         TreeNode node2 = new TreeNode(3, node4, node5);
         TreeNode root = new TreeNode(1, node1, node2);
         Traversal traversal = new Traversal();
-        traversal.levelOrderTraversal(root);
+        traversal.inOrderTraversal_NonRecursive(root);
     }
 }
