@@ -27,7 +27,7 @@ import java.util.List;
 public class Kruskal {
     /**
      * kruskal实现最小生成树算法
-     * 返回一个图 存放一个最小生成树路径 由最小的顶点触发 。
+     * 返回一个图 存放一个最小生成树路径 由最小的顶点出发进行遍历 。
      * @param graphMatrix
      * @return
      */
@@ -41,6 +41,7 @@ public class Kruskal {
             for (int j = 0; j < graphMatrix.VertexNum; j++) {
                 if (graphMatrix.EdgeWeight[i][j] != 0) {
                     //默认是无向图 因此可以将j,i的位置置为0
+                    //也就是add一条边即可
                     graphMatrix.EdgeWeight[j][i] = 0;
                     List<Integer> EdgeNode = new ArrayList<>();
                     EdgeNode.add(i);
@@ -50,21 +51,29 @@ public class Kruskal {
                 }
             }
         }
+        //对边的权值进行排序 使用冒泡排序（考虑到结点较小
         edgeSort(Edge);
+        //新建一个邻接矩阵存放最小生成树
         GraphMatrix gm = new GraphMatrix(graphMatrix.GType,graphMatrix.HasWeight,graphMatrix.VertexNum,graphMatrix.EdgeNum,graphMatrix.Vertex,new int[graphMatrix.VertexNum][graphMatrix.VertexNum]);
         for(int i=0;i<Edge.size();i++){
+            //如果 边数已经到达顶点数-1 说明已经到达了最小生成树的最大边数 因此不需要遍历后面的边了
             if (gm.EdgeNum==gm.VertexNum-1) break;
             int EdgePoint1=Edge.get(i).get(0);
             int EdgePoint2=Edge.get(i).get(1);
+            //获取开始点和结束点
             int a=getRoot(parent,EdgePoint1);
             int b=getRoot(parent,EdgePoint2);
+            //通过并查集 追溯源点
             if (a!=b) parent[a]=b;
             else continue;
-
+            //如果追溯到的源点不相同 说明图中无环 可以将其加入最小生成树中
+            //新生成的邻接矩阵将边放入
             gm.EdgeWeight[EdgePoint1][EdgePoint2]=Edge.get(i).get(2);
             gm.EdgeWeight[EdgePoint2][EdgePoint1]=Edge.get(i).get(2);
+            //总权值相加
             WeightTotal+=Edge.get(i).get(2);
         }
+        System.out.println("\n最小生成树总路径为:"+WeightTotal);
         return gm;
     }
     public static int getRoot(int[] parent,int x){
@@ -95,12 +104,14 @@ public class Kruskal {
             i=0;
         }//初始化探访过的数组
         DFS.DFSgraph(graphMatrix,0,visited);
-        GraphMatrix kruskalMst = kruskalMst(graphMatrix);
+
 
         for (int i=0 ;i< visited.length;i++) {
             visited[i]=0;
         }//初始化探访过的数组
-        System.out.println("\n============================\n");
+        GraphMatrix kruskalMst = kruskalMst(graphMatrix);
+
+        System.out.println("===============最小生成树====================");
         DFS.DFSgraph(kruskalMst,0,visited);
     }
 }
