@@ -34,7 +34,7 @@ public class BFS {
         }
     }
     public static void main(String[] args) {
-        GraphMatrix graphMatrix = new GraphMatrix(0, 11, 10);
+        GraphMatrix graphMatrix = new GraphMatrix(0, 3, 3);
         GraphMatrixUtils.create(graphMatrix);
         GraphMatrixUtils.outGraph(graphMatrix);
         BFS bfs = new BFS();
