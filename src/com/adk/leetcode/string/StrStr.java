@@ -1,4 +1,4 @@
-package com.adk.leetcode;
+package com.adk.leetcode.string;
 
 /**
  * 实现 strStr() 函数。

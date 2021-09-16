@@ -1,4 +1,4 @@
-package com.adk.leetcode;
+package com.adk.leetcode.arrays;
 
 public class IsElement {
     public static int removeElement(int[] nums, int val) {

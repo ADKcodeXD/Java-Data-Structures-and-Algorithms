@@ -1,4 +1,4 @@
-package com.adk.leetcode;
+package com.adk.leetcode.queue;
 
 import java.util.LinkedList;
 

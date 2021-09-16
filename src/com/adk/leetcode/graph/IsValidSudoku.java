@@ -1,4 +1,4 @@
-package com.adk.leetcode;
+package com.adk.leetcode.graph;
 
 public class IsValidSudoku {
     public boolean isValidSudoku(char[][] board) {

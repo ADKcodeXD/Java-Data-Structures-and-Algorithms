@@ -1,4 +1,4 @@
-package com.adk.leetcode;
+package com.adk.leetcode.doublepoint;
 
 public class IsPalindrome {
     public boolean isPalindrome(String s) {

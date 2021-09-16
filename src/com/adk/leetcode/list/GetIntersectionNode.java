@@ -1,4 +1,4 @@
-package com.adk.leetcode;
+package com.adk.leetcode.list;
 
 import com.adk.leetcode.node.ListNode;
 

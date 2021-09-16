@@ -1,4 +1,4 @@
-package com.adk.leetcode;
+package com.adk.leetcode.string;
 
 import java.util.ArrayList;
 import java.util.List;

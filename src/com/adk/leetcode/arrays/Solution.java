@@ -1,4 +1,4 @@
-package com.adk.leetcode;
+package com.adk.leetcode.arrays;
 
 class Solution {
     public String countAndSay(int n) {
