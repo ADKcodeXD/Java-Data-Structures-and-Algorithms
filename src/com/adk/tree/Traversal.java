@@ -71,7 +71,6 @@ public class Traversal {
 
             T = stack.removeLast();//返回到上一个节点（根节点）
             System.out.print(T.val+" ");//访问
-
             if(T!=null && T.right!=null) {//如果栈点元素有右孩子的话，将有节点压入栈中
                 stack.addLast(T.right);
                 T = T.right;
