@@ -28,6 +28,7 @@ public class LevelOrder {
         Queue<TreeNode> queue=new LinkedList<>();
         List<List<Integer>> res = new ArrayList<>();
         queue.add(root);
+        int level=0;
         while(!queue.isEmpty()){
             int levelNum=queue.size();//记录每层的节点数
             ArrayList<Integer> subList = new ArrayList<>();//每层的子数组
@@ -42,6 +43,7 @@ public class LevelOrder {
                     queue.add(treeNode.right);
                 }
             }
+
             res.add(subList);
         }
         return res;
